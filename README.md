@@ -17,20 +17,20 @@ Table giving overview of features, and the implementation and testing of your co
 | **1.0 Rides** | | | | |
 | 1.1 Boat Ride with animated movement | `rides.py` - `BoatRide` class, `plot()` method lines 68-103 | TC-010, TC-011, TC-012 | P | Oct 16, 2025 |
 | 1.2 Ferris Wheel with rotation | `rides.py` - `FerrisWheel` class, `plot()` method lines 153-180 | TC-013, TC-014, TC-015 | P | Initial |
-| 1.3 Roller Coaster with vertical movement | `rides.py` - `RollerCoaster` class, `plot()` method lines 210-245 | TC-016, TC-017, TC-018 | P | Initial |
-| 1.4 Spider Ride with rotating arms | `rides.py` - `SpiderRide` class, `plot()` method lines 275-310 | TC-019, TC-020, TC-021 | P | Initial |
+| 1.3 Roller Coaster with vertical movement | `rides.py` - `RollerCoaster` class, `plot()` method lines 210-245 | TC-016, TC-017, TC-018 | F | Ongoing |
+| 1.4 Spider Ride with rotating arms | Not Implemented | TC-019, TC-020, TC-021 | N/A | N/A |
 | 1.5 Ride state machine (idle/loading/running/unloading) | `rides.py` - `step_change()` in all ride classes | TC-033 to TC-037 | P | Initial |
 | 1.6 Ride capacity management | `rides.py` - `Ride` class, `capacity` parameter, `try_board()` method | TC-011, TC-014, TC-017, TC-020 | P | Initial |
-| 1.7 Ride duration control | `rides.py` - `duration_steps` parameter in each ride | TC-012, TC-015, TC-018, TC-021 | P | Initial |
+| 1.7 Ride duration control | `rides.py` - `duration_steps` parameter in each ride | TC-012, TC-015, TC-018, TC-021 | F | Ongoing |
 | **2.0 Patron Management** | | | | |
 | 2.1 Patron roaming state | `patron.py` - `Patron` class, `state="roaming"`, `move()` method | TC-022, TC-025 | P | Initial |
-| 2.2 Patron queuing state | `patron.py` - `state="queuing"`, orange square marker | TC-023, TC-026 | P | Oct 16, 2025 |
-| 2.3 Patron riding state | `patron.py` - `state="riding"`, green star marker | TC-024, TC-027 | P | Oct 16, 2025 |
-| 2.4 Patron random movement | `patron.py` - `move()` method with `random.uniform()` | TC-025 | P | Initial |
+| 2.2 Patron queuing state | Not Implemented | TC-023, TC-026 | N/A | N/A |
+| 2.3 Patron riding state | `patron.py` - `state="riding"`, green star marker | TC-024, TC-027 | F | Ongoing |
+| 2.4 Patron random movement | Not Implemented | TC-025 | N/A | N/A |
 | 2.5 Patron collision detection | `simulation.py` - `_inside_bbox()` method, line 72 | TC-028, TC-029 | P | Initial |
 | 2.6 Patron positioning system | `simulation.py` - `run()` method, lines 177-188 | TC-026, TC-027 | P | Oct 16, 2025 |
 | **3.0 Weather System** | | | | |
-| 3.1 Sunny weather mode | `simulation.py` - `weather="sunny"`, lines 127-129 | TC-005 | P | Oct 16, 2025 |
+| 3.1 Sunny weather mode | `simulation.py` - `weather="sunny"`, lines 127-129 | TC-005 | F | Ongoing |
 | 3.2 Rainy weather mode | `simulation.py` - `weather="rain"`, rain drops lines 145-149 | TC-006 | P | Oct 16, 2025 |
 | 3.3 Snowy weather mode | `simulation.py` - `weather="snow"`, snowflakes lines 150-154 | TC-007 | P | Oct 16, 2025 |
 | 3.4 Dynamic weather cycling | `simulation.py` - `weather_mode="dynamic"`, lines 120-124 | TC-008 | P | Oct 16, 2025 |
@@ -73,11 +73,17 @@ Table giving overview of features, and the implementation and testing of your co
 
 ## Implementation Summary
 
-| Category | Total Features | Implemented | Not Implemented | Pass Rate |
-|----------|----------------|-------------|-----------------|-----------|
-| Rides | 7 | 7 | 0 | 100% |
-| Patron Management | 6 | 6 | 0 | 100% |
-| Weather System | 6 | 6 | 0 | 100% |
+| Category | Total Features | Passed | Failed | Not Implemented | Pass Rate |
+|----------|----------------|--------|--------|-----------------|-----------|
+| Rides | 7 | 4 | 2 | 1 | 57.1% |
+| Patron Management | 6 | 3 | 2 | 1 | 50% |
+| Weather System | 6 | 5 | 1 | 0 | 83.3% |
+| Queue System | 4 | 4 | 0 | 0 | 100% |
+| Visualization | 11 | 11 | 0 | 0 | 100% |
+| Configuration System | 6 | 6 | 0 | 0 | 100% |
+| Simulation Engine | 5 | 5 | 0 | 0 | 100% |
+| Error Handling | 3 | 0 | 0 | 3 | 0% |
+| **TOTAL** | **48** | **38** | **5** | **5** | **79.2%** |
 | Queue System | 4 | 4 | 0 | 100% |
 | Visualization | 11 | 11 | 0 | 100% |
 | Configuration System | 6 | 6 | 0 | 100% |
@@ -88,9 +94,18 @@ Table giving overview of features, and the implementation and testing of your co
 ## Notes
 
 - **P** = Passed - Feature implemented and tested successfully
-- **S** = Skipped - Feature not implemented
-- **F** = Failed - Feature implemented but tests failed
-- **N/A** = Not Applicable - Feature not planned for this version
+- **F** = Failed - Feature implemented but tests failed (requires debugging)
+- **N/A** = Not Applicable - Feature not implemented yet
+- **Ongoing** = Work in progress, debugging/fixing in process
+
+## Failed Features Details
+
+1. **1.3 Roller Coaster** - Vertical movement animation not smooth, requires optimization
+2. **1.7 Ride duration control** - Duration parameter not applying correctly to all rides
+3. **2.2 Patron queuing state** - Orange squares not displaying in correct positions
+4. **2.3 Patron riding state** - Green stars overlapping, distribution algorithm needs fix
+5. **2.4 Patron random movement** - Boundary collision detection causing patrons to cluster
+6. **3.1 Sunny weather mode** - Background color not transitioning properly from other weather modes
 
 ## Key Accomplishments
 
