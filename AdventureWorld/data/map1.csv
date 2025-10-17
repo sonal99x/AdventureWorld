@@ -1,0 +1,8 @@
+type,name,x,y,width,height
+boundary,park,0,0,100,100
+ride_box,ride1,20,60,20,12
+ride_box,ride2,80,60,20,12
+ride_box,ride3,20,20,20,12
+ride_box,ride4,80,20,20,12
+entrance,gateA,0,50,0,0
+exit,gateB,100,50,0,0

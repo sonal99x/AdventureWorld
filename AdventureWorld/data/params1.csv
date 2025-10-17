@@ -1,0 +1,16 @@
+param,value
+num_patrons,50
+steps,500
+seed,42
+weather,dynamic
+ride1.capacity,10
+ride1.duration_steps,40
+ride1.speed_deg_per_step,5
+ride2.capacity,12
+ride2.duration_steps,60
+ride2.speed_deg_per_step,3
+ride3.capacity,8
+ride3.duration_steps,40
+ride4.capacity,10
+ride4.duration_steps,50
+ride4.speed_deg_per_step,6
